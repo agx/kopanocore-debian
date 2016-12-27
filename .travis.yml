@@ -1,0 +1,16 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+env:
+  env:
+  - TRAVIS_DEBIAN_DISTRIBUTION=sid
+
+script:
+  - wget -O- https://raw.githubusercontent.com/agx/travis.debian.net/invoke-rc.d/script.sh | sh -
+
+branches:
+  except:
+    - /^debian\/\d/
