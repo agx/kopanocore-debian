@@ -1,5 +1,6 @@
 sudo: required
 language: generic
+cache: ccache
 
 services:
   - docker
@@ -9,7 +10,10 @@ env:
   - TRAVIS_DEBIAN_DISTRIBUTION=sid
 
 script:
-  - wget -O- https://raw.githubusercontent.com/agx/travis.debian.net/invoke-rc.d/script.sh | sh -
+  - find ${HOME}/.ccache
+  - du -s ${HOME}/.ccache
+  - wget -O- https://raw.githubusercontent.com/agx/travis.debian.net/ccache/script.sh | sh -
+  - du -s ${HOME}/.ccache
 
 branches:
   except:
